@@ -101,23 +101,19 @@
         crossorigin="anonymous"></script>
 
     <script>
-        // Variables
+      
         let imageURL;
-
-        // Function to handle form submission
         function submitHandler() {
             console.log("Upload button clicked");
             const fileInput = document.getElementById('fileInput');
             const image = fileInput.files[0];
 
-            // Create FormData to send the image
             const formData = new FormData();
             formData.append('image_file', image);
             formData.append('size', 'auto');
 
             const apiKey = 'uD6VRsvrZ9BhstumNAGEcABF';
 
-            // Send the image to the API for background removal
             fetch('https://api.remove.bg/v1.0/removebg', {
                     method: 'POST',
                     headers: {
@@ -127,7 +123,7 @@
                 })
                 .then(response => response.blob())
                 .then(blob => {
-                    // Convert the blob to URL and display the result image
+                 
                     const url = URL.createObjectURL(blob);
                     imageURL = url;
                     const img = document.getElementById('previewImage');
@@ -136,7 +132,7 @@
                 .catch(error => console.error(error));
         }
 
-        // Function to download the result image
+      
         function downloadFile() {
             const a = document.createElement('a');
             a.href = imageURL;
